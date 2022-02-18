@@ -1,24 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import NavBar from './components/navbar';
+import List from './components/list';
+import { initialState, reducer } from "./hooks/reducer";
+import { useEffect, useReducer } from "react"
+import AutoSizer from 'react-virtualized-auto-sizer';
+import axios from "axios";
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+    useEffect( () => {async function getData(){
+                const response = await axios.get(`https://jsonplaceholder.typicode.com/todos/`);
+                const fulldata = response.data;
+                dispatch({type: 'getData', value: fulldata});
+    } getData()}, [])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    <NavBar dispatch={dispatch} filter={state.mainPage.searchFor}/>
+    <div className='listContainer'>
+      <AutoSizer>
+        {List (state.mainPage.currentData)}
+      </AutoSizer>
     </div>
+    </>
   );
 }
 
