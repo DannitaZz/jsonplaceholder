@@ -17,7 +17,7 @@ function App() {
   return (
     <>
     <NavBar dispatch={dispatch} filter={state.mainPage.searchFor}/>
-    <div className='listContainer'>
+    <div className='listContainer ms-3 me-3 mt-3'>
       <AutoSizer>
         {List (state.mainPage.currentData)}
       </AutoSizer>

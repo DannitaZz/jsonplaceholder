@@ -1,4 +1,7 @@
 .listContainer {
   color:'red';
-  height: 94vh;
+  height: 93vh;
+}
+::-webkit-scrollbar {
+  display: none;
 }

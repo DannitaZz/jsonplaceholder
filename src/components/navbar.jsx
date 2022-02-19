@@ -4,7 +4,7 @@ function NavBar({dispatch, filter}) {
       dispatch({type: 'setType', value: type})
   }
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="d-flex container-fluid">
         <a className="navbar-brand p-2 flex-grow-1"><i className="bi bi-filetype-json"></i> JSON Placeholder</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
